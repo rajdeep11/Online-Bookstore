@@ -38,7 +38,6 @@ class Order(models.Model):
 class Request_Book(models.Model):
     book_name = models.CharField(max_length=100)
     author = models.CharField(max_length=100)
-    issued_on = models.DateField(auto_now_add=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
