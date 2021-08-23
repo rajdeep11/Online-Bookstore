@@ -1,5 +1,20 @@
 {% extends 'base.html' %}
 
+{%  block css %}
+<style type="text/css">
+    table {
+      width: 50%;
+      counter-reset: row-num-1;
+    }
+    table tr {
+      counter-increment: row-num;
+    }
+    table tr td:first-child::before {
+        content: counter(row-num) ". ";
+    }
+    </style>
+{% endblock %}
+
 {% block body %}
 <div class="row">
     <div class="col-md">
