@@ -11,7 +11,7 @@
                             <div class="card-header">Register</div>
                             <div class="card-body" style="background-color: #EAEAEA;">
 
-                                <form class="form-horizontal" method="post" action="register">
+                                <form class="form-horizontal" method="POST" action="register">
 
                                     <div class="form-group">
                                         <label for="name" class="cols-sm-2 control-label">First Name</label>
@@ -41,11 +41,24 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label for="email" class="cols-sm-2 control-label">Category</label>
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                                                <input type="drop" class="form-control" name="email" id="email" placeholder="Seller/Customer" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label for="username" class="cols-sm-2 control-label">Username</label>
                                         <div class="cols-sm-10">
                                             <div class="input-group">
                                                 <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Username" />
+                                                <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Username" list="user_type" />
+                                                <datalist id="user_type">
+                                                    <option value="Seller">
+                                                    <option value="Customer">
+                                                </datalist>>
                                             </div>
                                         </div>
                                     </div>
@@ -71,7 +84,8 @@
                                         <button type="submit" class="btn btn-primary btn-lg btn-block login-button">Register</button>
                                     </div>
                                     <div class="login-button btn-lg" >
-                                        <a href="/login" >Login</a>
+                                        <p>Already a User?  <a href="/login" >Login</a></p>
+                                        
                                     </div>
                                 </form>
                             </div>

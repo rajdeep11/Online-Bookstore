@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from django.contrib.auth import logout
+from django.contrib.auth import login ,logout
 from django.contrib.auth.models import User
 from .models import *
 from django.contrib.auth.decorators import login_required
@@ -60,10 +60,27 @@ def register(request):
                     last_name= last_name
                 )
                 user.save()
-                messages.info(request,'User Created')
-                return redirect(request, 'login.html')
+                login(request, user)
+                messages.info(request,f'User Created:{username}')
+                return redirect('/')
+                # return redirect(request, 'login.html')
         else:
             print('Passwords not matching...!!')
 
     else:
         return render(request, 'register.html')
+
+def checkout(request):
+    if request.method=="POST":
+        user = request.user
+        items_json = request.POST.get('items', '')
+        name = request.POST.get('name', '')
+        price = request.POST.get('price', '')
+        email = request.POST.get('email', '')
+        address = request.POST.get('address', '')
+        phone = request.POST.get('phone', '')
+        order = Order(user=user, items_json=items_json, name=name, email=email, address=address, phone=phone, price=price)
+        order.save()
+        thank = True
+        return render(request, 'cart_checkout.html', {'thank':thank})
+    return render(request, "cart_checkout.html")
