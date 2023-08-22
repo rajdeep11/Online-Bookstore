@@ -1,2 +1,4 @@
+Admin panel login
 username: rajdeep_bookstore
 password: onlinebookstore
+Note: To access the admin panel, add "/admin" to the base URL
